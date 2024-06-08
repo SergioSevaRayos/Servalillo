@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+    <link rel="shortcut icon" href="media/gota-removebg-preview.png" type="image/x-icon">
+    <title>Trayectoria de la Empresa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-timeline-graph2d.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-timeline-graph2d.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis-timeline-graph2d.min.css" rel="stylesheet">
+
+
+</head>
+<style>
+    /* Estilos personalizados para el contenedor */
+#timeline {
+    margin-top: 30px;
+    border: 2px solid #0011ff;
+    /* Borde del contenedor */
+    border-radius: 10px;
+    /* Bordes redondeados del contenedor */
+    padding: 20px;
+    /* Espacio interno del contenedor */
+    background-color: #fafafa;
+    /* Color de fondo del contenedor */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.555);
+    /* Sombra del contenedor */
+}
+
+/* Estilos personalizados para las tarjetas */
+.vis-item {
+    background-color: transparent;
+    /* Color de fondo de las tarjetas */
+    border: 0px solid #ff000000;
+    /* Borde de las tarjetas */
+    border-radius: 5px;
+    /* Bordes redondeados de las tarjetas */
+
+    /* Sombra de las tarjetas */
+}
+
+.custom-item img {
+
+    max-height: 150px;
+}
+
+.date-label {
+    color: black;
+    font-weight: bold;
+    margin-bottom: 50px;
+    padding-bottom: 100px;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    #timeline {
+        margin-top: 20px;
+        padding: 10px;
+        border: 1px solid #0011ff;
+        border-radius: 5px;
+    }
+
+    .custom-item img {
+        max-width: 100px;
+        max-height: 100px;
+    }
+
+    .date-label {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 480px) {
+    #timeline {
+        margin-top: 15px;
+        padding: 5px;
+        border: 1px solid #0011ff;
+        border-radius: 5px;
+    }
+    .custom-item {
+    margin-left: 35px; /* Agrega un margen de 5px alrededor de cada elemento */
+    
+    padding: 5px; /* Agrega un relleno de 5px dentro de cada elemento */
+}
+
+    .custom-item img {
+        max-width: 80px;
+        max-height: 80px;
+
+    }
+
+    .date-label {
+        font-size: 0.7em;
+        color: black;
+    }
+}
+
+</style>
+
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="logo-container">
+            <div class="logo">
+                <img src="media/logoServalillo.png" alt="Logo de la Empresa">
+            </div>
+            <div class="logo-text">
+                <p>AGUA MINERAL NATURAL</p>
+            </div>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#quienes-somos">Quiénes somos</a></li>
+                <li><a href="#trayectoria">Nuestra Trayectoria</a></li>
+                <li><a href="#productos">Servicios</a></li>
+                <li><a href="#noticias">Noticias</a></li>
+                <li><a href="#reconocimientos">Reconocimientos</a></li>
+                <li><a href="#equipo">Equipo</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Página de inicio -->
+    <section id="inicio" class="section">
+        <div class="banner">
+            <h1>Bienvenido a Aguas del Servalillo</h1>
+
+            <p>Conoce nuestra trayectoria y logros a lo largo de los años.</p>
+
+        </div>
+        <div id="timeline"></div>
+    </section>
+
+
+
+    <!-- Sección "Quiénes somos" -->
+    <section id="quienes-somos" class="section">
+        <h2>Quiénes somos</h2>
+        <div class="historia">
+            <h3>Nuestra Historia</h3>
+            <p>Desde 1920, Aguas del Servalillo ha sido una fuente confiable de agua potable y no potable en la
+                provincia de Almería...</p>
+            <button class="leer-mas" data-target="historia">Leer más</button>
+        </div>
+        <div class="mision-vision">
+            <h3>Misión</h3>
+            <p>Proporcionar agua potable y no potable de calidad...</p>
+            <button class="leer-mas" data-target="mision">Leer más</button>
+            <h3>Visión</h3>
+            <p>Ser líderes en el suministro de agua...</p>
+            <button class="leer-mas" data-target="vision">Leer más</button>
+            <h3>Valores</h3>
+            <p>Calidad, confiabilidad, sostenibilidad...</p>
+            <button class="leer-mas" data-target="valores">Leer más</button>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- Sección "Nuestra Trayectoria" -->
+    <section id="trayectoria" class="section">
+        <h2>Nuestra Trayectoria</h2>
+        <div class="linea-tiempo">
+            <h3>Hitos importantes</h3>
+            <p>A lo largo de los años, Aguas del Servalillo ha sido pionera en la innovación tecnológica en el
+                tratamiento y suministro de agua. Desde la introducción de métodos de purificación de vanguardia hasta
+                la expansión de nuestros servicios para incluir el llenado de piscinas, apoyo a la industria del
+                entretenimiento y más, hemos marcado hitos significativos en el sector hídrico.</p>
+        </div>
+        <div class="galeria">
+            <h3>Galería</h3>
+            <p>¡Próximamente!</p>
+            <button class="leer-mas" data-target="trayectoria">Leer más</button>
+        </div>
+    </section>
+
+    <!-- Sección "Productos/Servicios" -->
+    <section id="productos" class="section">
+        <h2>Productos/Servicios</h2>
+        <div class="descripcion-productos">
+            <h3>Descripción</h3>
+            <p>Aguas del Servalillo ofrece una amplia gama de productos y servicios, incluyendo agua potable y no
+                potable para hogares, empresas y proyectos comerciales e industriales. Además, proporcionamos servicios
+                especializados como el llenado de piscinas, apoyo a obras y proyectos de construcción, suministro de
+                agua para la industria del entretenimiento y más.</p>
+        </div>
+        <div class="innovaciones">
+            <h3>Innovaciones</h3>
+            <p>Nos esforzamos por mantenernos a la vanguardia de la tecnología y la sostenibilidad en el sector hídrico.
+                Desde el desarrollo de sistemas de purificación avanzados hasta la implementación de prácticas de
+                gestión del agua eficientes, buscamos constantemente nuevas formas de mejorar nuestros productos y
+                servicios para satisfacer las necesidades cambiantes de nuestros clientes y proteger nuestro entorno.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sección "Noticias y eventos" -->
+    <section id="noticias" class="section">
+        <h2>Noticias y eventos</h2>
+        <div class="actualizaciones">
+            <h3>Actualizaciones</h3>
+            <p>¡Mantente al tanto de las últimas noticias y actualizaciones de Aguas del Servalillo aquí!</p>
+        </div>
+        <div class="eventos-futuros">
+            <h3>Eventos futuros</h3>
+            <p>Descubre los próximos eventos y actividades en los que participará Aguas del Servalillo.</p>
+        </div>
+    </section>
+
+    <!-- Sección "Reconocimientos" -->
+    <section id="reconocimientos" class="section">
+        <h2>Reconocimientos</h2>
+        <div class="premios">
+
+            <div>
+                <h3>Premios y distinciones</h3>
+                <p>A lo largo de nuestra historia, hemos sido honrados con varios premios y distinciones en
+                    reconocimiento a nuestro compromiso con la excelencia en el suministro de agua y nuestra
+                    contribución al desarrollo sostenible. Estos premios nos inspiran a seguir adelante en nuestro
+                    camino de innovación y servicio excepcional.</p>
+            </div>
+            <div class="publicaciones">
+                <h3>Publicaciones</h3>
+                <p>Descubre las publicaciones y artículos destacados que han presentado a Aguas del Servalillo como
+                    líder en el sector hídrico y como un modelo de sostenibilidad y responsabilidad corporativa.</p>
+            </div>
+    </section>
+
+    <!-- Sección "Equipo" -->
+    <section id="equipo" class="section">
+        <h2>Equipo</h2>
+        <div class="lideres">
+            <h3>Líderes</h3>
+            <p>Nuestro equipo directivo está compuesto por profesionales dedicados y apasionados que lideran con visión
+                y experiencia, guiando a Aguas del Servalillo hacia el éxito y el crecimiento sostenible.</p>
+        </div>
+        <div class="evolucion-equipo">
+            <h3>Evolución del equipo</h3>
+            <p>Desde nuestros humildes comienzos en 1920 hasta el presente, el equipo de Aguas del Servalillo ha crecido
+                y evolucionado, adaptándose a los desafíos cambiantes y manteniendo siempre nuestro compromiso con la
+                excelencia y la calidad en todo lo que hacemos.</p>
+        </div>
+    </section>
+
+    <!-- Sección "Contacto" -->
+    <section id="contacto" class="section">
+        <h2>Contacto</h2>
+        <form>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea id="mensaje" name="mensaje" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+        <div class="info-contacto">
+            <p>Dirección: Calle Falsa 123, Ciudad, País</p>
+            <p>Teléfono: +123 456 7890</p>
+            <p>Email: contacto@aguadelservalillo.com</p>
+        </div>
+    </section>
+
+    <!-- Estructura de la ventana modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-text"></div>
+        </div>
+    </div>
+
+
+
+    <script src="main.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

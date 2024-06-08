@@ -1,0 +1,461 @@
+/* General */
+/* General */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #e0e0e0;
+    color: #333;
+}
+
+/* Botones "Leer más" */
+.leer-mas {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #1e43ec;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.leer-mas:hover {
+    background-color: #162ecc;
+}
+
+/* Ventana modal */
+/* Ventana modal */
+.modal {
+    display: none;
+    font-weight: 400;
+    font-family: 'Cabin', sans-serif;
+
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(255, 255, 255, 0.945);
+    /* Cambiar a un fondo blanco semitransparente */
+}
+
+/* Resto del CSS sigue igual... */
+
+
+.modal-content {
+    background-color: rgba(255, 255, 255, 0);
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    animation: fadeIn 0.5s;
+}
+
+.modal-content .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-content .close:hover,
+.modal-content .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Animación de la ventana modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Resto del CSS... */
+
+header {
+    background: rgba(255, 255, 255, 0.815);
+    color: #1e43ec;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(25, 0, 255, 0.171);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    transition: top 0.3s;
+    /* Agregar transición para suavizar la aparición/desaparición */
+}
+
+.header-hidden {
+    transform: translateY(-100%);
+    transition: transform 0.5s ease;
+    /* Transición suave durante medio segundo */
+}
+
+
+header.hide {
+    top: -280px;
+    /* Ajusta este valor según la altura de tu encabezado */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 150px;
+    /* Ajuste del tamaño de la imagen en dispositivos más pequeños */
+    margin-left: 20px;
+}
+
+.logo-text p {
+    font-size: 1.5em;
+    font-weight: bold;
+    font-family: 'Cabin', sans-serif;
+    /* Aplicar la fuente Cabin */
+    margin: 0;
+    padding: 0;
+}
+
+.logo-text::after {
+    content: '';
+    display: block;
+    height: 2px;
+    /* Ajusta la altura de la línea según sea necesario */
+    width: 100%;
+    background: linear-gradient(to right, transparent, #1e43ec, transparent);
+    margin-top: 5px;
+    /* Ajusta la distancia entre el texto y la línea según sea necesario */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #1e43ec;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ff0000;
+}
+
+.banner {
+    position: relative;
+    color: #fff;
+    text-align: center;
+    padding: 150px 20px;
+    overflow: hidden;
+}
+
+.banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('media/18839319_1527291073970249_7813973089009873982_n.jpg') no-repeat center center/cover;
+    /* Ruta a tu imagen */
+    filter: blur(10px);
+    /* Ajusta el nivel de desenfoque según sea necesario */
+    z-index: 1;
+}
+
+.banner::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.banner h1 {
+    font-size: 3em;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 2;
+}
+
+.banner p {
+    font-size: 1.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    position: relative;
+    z-index: 2;
+}
+
+/* Sections */
+section {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    padding: 60px 20px;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(224, 224, 224, 1), rgba(224, 224, 224, 0));
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    pointer-events: none;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #1e43ec;
+}
+
+section h3 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+section p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Sección "Contacto" */
+section#contacto form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+section#contacto form label {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+section#contacto form input,
+section#contacto form textarea {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+}
+
+section#contacto form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #1e43ec;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+section#contacto form button:hover {
+    background: #162ecc;
+}
+
+section#contacto .info-contacto {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+/* Pie de página */
+footer {
+    background: rgba(30, 67, 236, 0.9);
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+footer .enlaces-rapidos ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer .enlaces-rapidos ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+footer .enlaces-rapidos ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+footer .enlaces-rapidos ul li a:hover {
+    color: #ffd700;
+}
+
+footer .redes-sociales a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+footer .redes-sociales a:hover {
+    color: #ffd700;
+}
+
+
+/* Media Queries */
+
+/* Dispositivos pequeños (teléfonos) */
+@media (max-width: 600px) {
+    header.hide {
+        top: -380px;
+        /* Ajusta este valor según la altura de tu encabezado */
+    }
+
+    .logo img {
+        width: 200px;
+        /* Ajustar el tamaño de la imagen en dispositivos más pequeños */
+    }
+
+    .banner {
+        padding: 100px 20px;
+    }
+
+    .banner h1 {
+        font-size: 2em;
+    }
+
+    .banner p {
+        font-size: 1.2em;
+    }
+
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    nav ul li a {
+        font-size: 1em;
+    }
+
+    section {
+        padding: 40px 20px;
+    }
+}
+
+/* Dispositivos medianos (tabletas) */
+@media (min-width: 601px) and (max-width: 1024px) {
+    .logo img {
+        width: 150px;
+        /* Ajustar el tamaño de la imagen en dispositivos medianos */
+    }
+
+    .banner {
+        padding: 120px 20px;
+    }
+
+    .banner h1 {
+        font-size: 2.5em;
+    }
+
+    .banner p {
+        font-size: 1.3em;
+    }
+
+    nav ul li {
+        display: inline-block;
+        margin-right: 15px;
+    }
+
+    nav ul li a {
+        font-size: 1.2em;
+    }
+
+    section {
+        padding: 50px 20px;
+    }
+}
+
+/* Dispositivos grandes (escritorios) */
+@media (min-width: 1025px) {
+    .logo img {
+        width: 450px;
+    }
+
+    .banner {
+        padding: 150px 20px;
+    }
+
+    .banner h1 {
+        font-size: 3em;
+    }
+
+    .banner p {
+        font-size: 1.5em;
+    }
+
+    nav ul li {
+        display: inline-block;
+        margin-right: 20px;
+    }
+
+    nav ul li a {
+        font-size: 1.2em;
+    }
+
+    section {
+        padding: 60px 20px;
+    }
+}
